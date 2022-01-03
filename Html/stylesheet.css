@@ -1,0 +1,75 @@
+:root {
+  --bg-color: hsl(248, 16%, 18%);
+  --typewriteSpeed: 2.7s;
+  --caracteres: 21;
+}
+
+body {
+  margin: 0;
+  font-family: "source-sans-pro", sans-serif;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background: var(--bg-color);
+}
+
+h1 {
+  font-size: clamp(1rem, 3vw + 1rem, 4rem);
+  position: relative;
+  font-family: "comic sans", monospace;
+  position: relative;
+  width: max-content;
+  color: white;
+}
+
+h1::before,
+h1::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+h1::before {
+  background: var(--bg-color);
+  animation: typing var(--typewriteSpeed) steps(var(--caracteres)) 0.5s forwards;
+}
+
+h1::after {
+  width: 0.125em;
+  background: white;
+  animation: 
+    typing var(--typewriteSpeed) steps(var(--caracteres)) 0.5s forwards, 
+    blink 700ms steps(19) infinite;
+}
+
+.subtitle {
+  color: white;
+  font-size: 2rem;
+  font-weight: 400;
+  opacity: 0;
+  transform: translate3d(3rem);
+  animation: fadein 2s ease calc(var(--typewriteSpeed) + 1s) forwards;
+}
+
+@keyframes typing {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes fadein {
+  to {
+    opacity: 100%;
+    transform: translate3d(1em);
+  }
+}
